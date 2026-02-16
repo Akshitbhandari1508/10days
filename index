@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>10 Days To Go 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    height:100vh;
+    background: linear-gradient(
+        135deg,
+        #ffb6c1,
+        #ff9eb5,
+        #f7c1d9,
+        #d8b4f8
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(15px);
+    padding:35px 30px;
+    border-radius:25px;
+    text-align:center;
+    color:#ffffff;
+    box-shadow:
+        0 20px 40px rgba(255,105,180,0.35),
+        inset 0 0 30px rgba(255,255,255,0.2);
+    animation: pop 1.2s ease;
+    z-index:2;
+}
+
+@keyframes pop{
+    0%{transform:scale(0.6);opacity:0;}
+    100%{transform:scale(1);opacity:1;}
+}
+
+h1{
+    font-size:2.1rem;
+    margin-bottom:8px;
+}
+
+.days{
+    font-size:4.2rem;
+    font-weight:800;
+    background: linear-gradient(90deg,#ff4d8d,#ffb3d9,#ff4d8d);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer{
+    0%{background-position:0%;}
+    100%{background-position:200%;}
+}
+
+p{
+    margin-top:15px;
+    font-size:1.1rem;
+    color:#fff0f6;
+    line-height:1.5;
+}
+
+button{
+    margin-top:22px;
+    padding:13px 30px;
+    border:none;
+    border-radius:30px;
+    background: linear-gradient(135deg,#ff5fa2,#ff3d81);
+    color:white;
+    font-size:1rem;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,61,129,0.5);
+    transition:0.3s ease;
+}
+
+button:hover{
+    transform:scale(1.08);
+    box-shadow:0 15px 35px rgba(255,61,129,0.7);
+}
+
+/* Hearts */
+.heart{
+    position:absolute;
+    font-size:22px;
+    animation: float 6s linear infinite;
+    opacity:0.9;
+}
+
+@keyframes float{
+    0%{transform:translateY(110vh) scale(0.6);}
+    50%{opacity:1;}
+    100%{transform:translateY(-10vh) scale(1.1);opacity:0;}
+}
+
+/* Surprise Overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(6px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:0.5s;
+    z-index:5;
+}
+
+.overlay.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.message-box{
+    background:linear-gradient(135deg,#ff9eb5,#f7c1d9);
+    padding:30px;
+    border-radius:25px;
+    text-align:center;
+    color:white;
+    width:85%;
+    max-width:400px;
+    box-shadow:0 20px 40px rgba(255,105,180,0.6);
+    animation: pop 0.8s ease;
+}
+
+.message-box h2{
+    font-size:1.8rem;
+    margin-bottom:15px;
+}
+
+.message-box p{
+    font-size:1.1rem;
+    line-height:1.6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Hii Anshita 💗</h1>
+    <div class="days">10</div>
+    <h1>Days To Go 🎂</h1>
+    <p>
+        Just a little reminder 💕<br>
+        That someone out there is already excited<br>
+        to celebrate YOU 🌷
+    </p>
+    <button onclick="surprise()">A Tiny Surprise ✨</button>
+</div>
+
+<div class="overlay" id="overlay">
+    <div class="message-box">
+        <h2>Just So You Know 💖</h2>
+        <p>
+            Keep smiling — it suits you beautifully 💕
+
+Achieve everything you dream of,
+chase every goal with confidence,
+and always find reasons to stay happy 🌷<br><br>
+            These 10 days aren’t just a countdown…  
+            they’re excitement building for **YOU** 🎂✨
+        </p>
+    </div>
+</div>
+
+<script>
+function surprise(){
+    document.getElementById("overlay").classList.add("show");
+}
+
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML=["💗","💖","💕","🌸"][Math.floor(Math.random()*4)];
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*3)+"s";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{heart.remove();},7000);
+}
+setInterval(createHeart,350);
+</script>
+
+</body>
+</html>
